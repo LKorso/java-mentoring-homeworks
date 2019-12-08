@@ -55,10 +55,7 @@ public class CircularBuffer<T> {
         T[] output = createEmptyArray(actualSize);
         for (int i = tailIndex, j = 0; i != headIndex; j++) {
             output[j] = values[i];
-            i++;
-            if (i == values.length) {
-                i = 0;
-            }
+            i = defineNextIndexPosition(i);
         }
         return output;
     }
